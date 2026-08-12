@@ -1,47 +1,76 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="GooseART — Paige's artist and designer portfolio, commissions, and creative work.">
-  <title>GooseART — Paige | Artist & Designer</title>
-  <link rel="icon" href="assets/goose-p-mark.jpg" type="image/jpeg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="noise"></div>
-  <div id="loader" class="loader"><img src="assets/goose-p-mark.jpg" alt="GooseART"><span>LOADING GOOSEART</span></div>
-  <header class="site-header">
-    <a class="brand-mini" href="#/home" aria-label="GooseART home"><img src="assets/goose-p-mark.jpg" alt="GooseART P logo"></a>
-    <nav id="desktop-nav" aria-label="Primary navigation">
-      <a href="#/home">Home</a>
-      <a href="#/portfolio">Portfolio</a>
-      <a href="#/pricing">Pricing</a>
-      <a href="#/contact">Contact</a>
-      <a href="#/socials">Socials</a>
-    </nav>
-    <a class="header-cta" href="#/contact">Work with Paige <span>↗</span></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-  </header>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#/home">Home</a><a href="#/portfolio">Portfolio</a><a href="#/pricing">Pricing</a><a href="#/contact">Contact</a><a href="#/socials">Socials</a>
-  </div>
-
-  <main id="app"></main>
-
-  <footer class="site-footer">
-    <div class="footer-top">
-      <div><img src="assets/paige-wordmark.png" class="footer-wordmark" alt="Paige"></div>
-      <div><p class="eyebrow">GOOSEART</p><p class="muted">Artist &amp; designer portfolio.</p><a class="footer-email" href="mailto:perickson0222@gmail.com">perickson0222@gmail.com</a></div>
-      <div class="footer-links"><a href="#/portfolio">Portfolio</a><a href="#/pricing">Pricing</a><a href="#/contact">Contact</a><a href="#/socials">Socials</a></div>
-      <a class="discord-pill" href="https://discord.gg/FRrZpU6bXH" target="_blank" rel="noopener">Join My Discord ↗</a>
-    </div>
-    <div class="footer-bottom"><span>© Paige Erickson &amp; GooseART — All works reserved.</span><span>Built around the art.</span></div>
-  </footer>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+/*
+  GOOSEART CONTENT CONFIG
+  Edit this file to add/remove portfolio items, pricing, and social URLs.
+  Social URLs intentionally start empty except for the Discord invite supplied by the client.
+*/
+const GOOSEART = {
+  contact: {
+    email: 'perickson0222@gmail.com',
+    discord: 'https://discord.gg/FRrZpU6bXH',
+    // Create a Formspree form and paste its endpoint here.
+    // Example: https://formspree.io/f/xxxxxxxx
+    formEndpoint: 'https://formspree.io/f/xqpzbdyq'
+  },
+  socials: {
+    x: '', instagram: '', builtbybit: '', mcmodels: ''
+  },
+  workedWith: [
+    'VividMC',
+    'YAMCS (Yet Another Minecraft Server)',
+    'TTVNumberSage',
+    'BoyGoneGaming',
+    'Tycoons.gg',
+    'ChubbyDuck1',
+    'Re Creative Agency',
+    'Sawtooth Jewelry Studio'
+  ],
+  intro: "Welcome to GooseART — a creative portfolio showcasing Paige's artwork, graphic design, illustrations, pixel art, and more.",
+  portfolio: {
+    'graphic-design': {
+      title: 'Graphic Design',
+      kicker: '01 / DESIGN',
+      description: 'Logos, branding, advertisements, merchandise, posters, social media design and more.',
+      color: 'teal',
+      categories: [
+        ['logos','Logos','Identity systems, marks and illustrated logo work.'],
+        ['business-cards','Business Cards','Professional cards designed to match a brand.'],
+        ['merchandise','Merchandise','Graphics made for apparel, products and merch.'],
+        ['social-media','Social Media Posts / Reels','Social graphics, promotional posts and reel assets.'],
+        ['advertisements','Advertisements','Promotional graphics built to get attention.'],
+        ['posters','Poster Design','Posters, event graphics and visual announcements.'],
+        ['headers-banners','Branded Headers / Banners','Headers, banners and online brand graphics.']
+      ]
+    },
+    'illustration': {
+      title: 'Illustration', kicker: '02 / ILLUSTRATION',
+      description: 'Expressive illustrated work, from stickers to Twitch reactions and emojis.', color: 'gold',
+      categories: [['stickers','Stickers','Custom sticker illustrations and expressive graphics.'],['twitch-reactions','Twitch Reactions / Emojis','Reaction sets, emotes and stream-ready artwork.']]
+    },
+    'pixel-art': {
+      title: 'Pixel Art', kicker: '03 / PIXEL ART',
+      description: 'Pixel-based artwork with a focus on Minecraft item textures.', color: 'ink',
+      categories: [['minecraft-textures','Minecraft Item Textures','Custom item textures and pixel-art assets for Minecraft.']]
+    },
+    'learning': {
+      title: 'Little Experience / Willing to Learn', kicker: '04 / EXPERIMENTAL',
+      description: 'Projects Paige has some experience with, is developing, or is excited to learn.', color: 'olive',
+      categories: [['youtube-thumbnails','YouTube Thumbnails','Minecraft-focused thumbnail concepts and designs.'],['minecraft-gui','Minecraft Custom GUI','Custom interfaces and Minecraft GUI concepts.'],['3d-rendering','3D Item Rendering','Rendered item visuals and experimental 3D work.'],['anything-else','Anything Else!','Miscellaneous projects that do not fit another category.']]
+    }
+  },
+  projects: {
+    /* Add project objects here. Example:
+    'logos': [{title:'Project Name', description:'...', image:'assets/work/my-image.jpg', client:'Client', date:'2026', tools:'Photoshop'}]
+    */
+  },
+  pricing: [
+    {name:'Social Media Revamp', details:'Profile avatar + header/banner', price:'$135', group:'Graphic Design'},
+    {name:'Social Media Branding', details:'Logo design + header design', price:'$135', group:'Graphic Design'},
+    {name:'Business Logo Package', details:'Logo design + business card design', price:'$140', group:'Graphic Design'},
+    {name:'Illustrated Logo Package', details:'Illustrated logo + mini icon', price:'$155', group:'Illustration'},
+    {name:'Discord Server Revamp', details:'Illustrated logo + mini icon + banner design (1080p)', price:'$190', group:'Graphic Design'},
+    {name:'1080p Illustration Package', details:'Illustrated logo + mini icon + 1080p illustration', price:'$275', group:'Illustration'},
+    {name:'1440p Illustration Package', details:'Illustrated logo + mini icon + 1440p illustration', price:'$335', group:'Illustration'},
+    {name:'Store Icons Package', details:'4x icon above gets $5 discount · 8x icon above gets $15 discount', price:'Custom', group:'Graphic Design'},
+    {name:'Weekly Thumbnail Packages (x3)', details:'x3 thumbnails', price:'$80', group:'Little Experience / Willing to Learn'}
+  ]
+};
