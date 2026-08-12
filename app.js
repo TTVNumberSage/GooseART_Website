@@ -30,7 +30,7 @@ function home(){
     </section>
     <section class="section alt"><div class="section-head"><div><p class="eyebrow">THE STUDIO</p><h2>Make it<br>memorable.</h2></div><p>GooseART is a personal creative studio for visual work that feels expressive, polished and distinctly its own. Browse by discipline to see exactly what Paige creates.</p></div><div class="mini-grid">${categoryCards()}</div></section>
     <section class="section"><div class="section-head"><div><p class="eyebrow">FEATURED / RECENT</p><h2>The work<br>comes first.</h2></div><p>Portfolio spaces are built to grow with Paige. Add projects later without redesigning the site.</p></div><div class="featured"><div class="feature-tile large"><span class="tag">01 / FEATURED ARTWORK</span><h3>Your next favorite piece.</h3><p>Placeholder space for a standout project. Replace this with a real artwork image whenever you're ready.</p></div><div class="feature-tile"><span class="tag">02 / RECENT WORK</span><h3>New ideas live here.</h3><p>Flexible portfolio space for recent commissions and experiments.</p></div><div class="feature-tile"><span class="tag">03 / COMMISSIONS</span><h3>Let's make something.</h3><p>Ready to commission Paige? Start with pricing or send an inquiry.</p></div></div></section>
-    <section class="section alt"><div class="section-head"><div><p class="eyebrow">GOOSEART ONLINE</p><h2>Find the<br>artist.</h2></div><p>Social accounts can be connected in one place. Add the correct URLs in <strong>data.js</strong> when they are ready.</p></div><div class="social-grid">${socialCards().slice(0,4)}</div></section>
+    <section class="section alt"><div class="section-head"><div><p class="eyebrow">SELECTED EXPERIENCE</p><h2>Worked<br>with.</h2></div><p>A selection of servers, creators, brands, and agencies Paige has worked with.</p></div><div class="worked-with">${GOOSEART.workedWith.map((name,i)=>`<div class="worked-item"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div>`).join('')}</div></section>
     <section class="section"><div class="contact-wrap"><div class="contact-copy"><p class="eyebrow">READY WHEN YOU ARE</p><h2>Interested in working with Paige?</h2><p>Browse the services, look through the portfolio, then send over the details of your idea.</p></div><div class="actions">${link('#/pricing','View Pricing','btn dark')}${link('#/contact','Start a Commission','btn light')}</div></div></section>`);
 }
 function portfolio(){
@@ -51,7 +51,7 @@ function pricing(){
   return shell('Pricing',pageTitle('Commissions / Pricing','Pricing','Current commission packages based on the supplied pricing sheet. Prices may vary where noted.')+`<section class="section"><div class="price-groups">${groups.map(g=>`<div class="price-group"><h2>${esc(g)}</h2><div class="price-grid">${GOOSEART.pricing.filter(x=>x.group===g).map(p=>`<article class="price-card"><h3>${esc(p.name)}</h3><div class="details">${esc(p.details)}</div><div class="price">${esc(p.price)}</div></article>`).join('')}</div></div>`).join('')}</div><div class="price-note"><strong>Price may vary.</strong> For a custom project, send Paige the details of what you need and the scope can be discussed before starting.</div><div class="actions">${link('#/contact','Commission Paige','btn dark')}</div></section>`);
 }
 function contact(){
-  return shell('Contact',pageTitle('Commission / Contact','Let’s make something.','Tell Paige what you have in mind. The form is structured for later connection to an email or form service and does not pretend to send anything until a backend is connected.')+`<section class="section"><div class="contact-wrap"><div class="contact-copy"><p class="eyebrow">FIND GOOSEART ONLINE</p><h2>Start the conversation.</h2><p>Include as much detail as you can: what you need, the style you're after, deadlines, and how Paige can reach you.</p><div class="contact-list"><a href="https://discord.gg/FRrZpU6bXH" target="_blank" rel="noopener">Discord ↗</a><span class="muted">X / Instagram / BuiltByBit / MCModels can be connected in data.js.</span></div></div><form class="contact-form" id="contactForm"><div class="field"><label>Name *</label><input required name="name" placeholder="Your name..." autocomplete="name"></div><div class="field"><label>Contact Information *</label><input required name="contact" placeholder="Your email address / Discord ..."></div><div class="field"><label>Phone Number</label><input name="phone" type="tel" placeholder="Optional phone number..."></div><div class="field"><label>Title *</label><input required name="title" placeholder="Your title..."></div><div class="field"><label>Message *</label><textarea required name="message" placeholder="Tell Paige about your project..."></textarea></div><button class="btn dark" type="submit">Send Message ↗</button><div class="success" id="formSuccess">Your inquiry is prepared, but no message was sent because a form backend has not been connected yet.</div></form></div></section>`);
+  return shell('Contact',pageTitle('Commission / Contact','Let’s make something.','Tell Paige what you have in mind. Include as much detail as you can so she can get back to you with the right information.')+`<section class="section"><div class="contact-wrap"><div class="contact-copy"><p class="eyebrow">COMMISSION INQUIRIES</p><h2>Start the conversation.</h2><p>Share what you need, the style you're after, your deadline, and anything else that will help Paige understand the project.</p><div class="contact-list"><a class="btn dark contact-discord" href="${esc(GOOSEART.contact.discord)}" target="_blank" rel="noopener">Join the GooseART Discord ↗</a><a class="contact-email" href="mailto:${esc(GOOSEART.contact.email)}">${esc(GOOSEART.contact.email)}</a></div></div><form class="contact-form" id="contactForm" novalidate><div class="field"><label>Name *</label><input required name="name" placeholder="Your name..." autocomplete="name"></div><div class="field"><label>Contact Information *</label><input required name="contact" placeholder="Your email address / Discord ..." autocomplete="email"></div><div class="field"><label>Phone Number</label><input name="phone" type="tel" placeholder="Optional phone number..." autocomplete="tel"></div><div class="field"><label>Title *</label><input required name="title" placeholder="Your title..."></div><div class="field"><label>Message *</label><textarea required name="message" placeholder="Tell Paige about your project..."></textarea></div><input class="contact-ref" name="_gotcha" tabindex="-1" autocomplete="off"><button class="btn dark" type="submit">Send Message ↗</button><div class="success" id="formSuccess"></div></form></div></section>`);
 }
 function socialCards(){
   const list=[['X','x','𝕏'],['Instagram','instagram','◎'],['BuiltByBit','builtbybit','B'],['MCModels','mcmodels','M']];
@@ -75,7 +75,45 @@ function render(){
   bindPageEvents();
 }
 function bindPageEvents(){
-  const form=document.getElementById('contactForm'); if(form) form.addEventListener('submit',e=>{e.preventDefault();document.getElementById('formSuccess').classList.add('show')});
+  const form=document.getElementById('contactForm');
+  if(form) form.addEventListener('submit', async e=>{
+    e.preventDefault();
+    const success=document.getElementById('formSuccess');
+    const button=form.querySelector('button[type="submit"]');
+    if(form._submitting) return;
+    if(!form.reportValidity()) return;
+    if(form.querySelector('[name="_gotcha"]').value) return;
+
+    if(!GOOSEART.contact.formEndpoint){
+      success.textContent='The contact form is ready, but its submission service still needs to be connected. Please email Paige directly at '+GOOSEART.contact.email+' for now.';
+      success.classList.add('show');
+      return;
+    }
+
+    form._submitting=true;
+    button.disabled=true;
+    button.textContent='Sending…';
+    success.classList.remove('show');
+
+    try{
+      const response=await fetch(GOOSEART.contact.formEndpoint,{
+        method:'POST',
+        headers:{'Accept':'application/json'},
+        body:new FormData(form)
+      });
+      if(!response.ok) throw new Error('Submission failed');
+      form.reset();
+      success.textContent='Thank you! Your inquiry has been sent to Paige successfully.';
+      success.classList.add('show');
+    }catch(err){
+      success.textContent='Something went wrong while sending your inquiry. Please email '+GOOSEART.contact.email+' directly instead.';
+      success.classList.add('show');
+    }finally{
+      form._submitting=false;
+      button.disabled=false;
+      button.textContent='Send Message ↗';
+    }
+  });
   document.querySelectorAll('.project').forEach(card=>card.addEventListener('click',()=>openLightbox(card)));
 }
 function openLightbox(card){

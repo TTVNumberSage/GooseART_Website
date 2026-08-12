@@ -4,10 +4,26 @@
   Social URLs intentionally start empty except for the Discord invite supplied by the client.
 */
 const GOOSEART = {
-  socials: {
+  contact: {
+    email: 'perickson0222@gmail.com',
     discord: 'https://discord.gg/FRrZpU6bXH',
+    // Create a Formspree form and paste its endpoint here.
+    // Example: https://formspree.io/f/xxxxxxxx
+    formEndpoint: ''
+  },
+  socials: {
     x: '', instagram: '', builtbybit: '', mcmodels: ''
   },
+  workedWith: [
+    'VividMC',
+    'YAMCS (Yet Another Minecraft Server)',
+    'TTVNumberSage',
+    'BoyGoneGaming',
+    'Tycoons.gg',
+    'ChubbyDuck1',
+    'Re Creative Agency',
+    'Sawtooth Jewelry Studio'
+  ],
   intro: "Welcome to GooseART — a creative portfolio showcasing Paige's artwork, graphic design, illustrations, pixel art, and more.",
   portfolio: {
     'graphic-design': {
