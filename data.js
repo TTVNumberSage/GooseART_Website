@@ -1,0 +1,60 @@
+/*
+  GOOSEART CONTENT CONFIG
+  Edit this file to add/remove portfolio items, pricing, and social URLs.
+  Social URLs intentionally start empty except for the Discord invite supplied by the client.
+*/
+const GOOSEART = {
+  socials: {
+    discord: 'https://discord.gg/FRrZpU6bXH',
+    x: '', instagram: '', builtbybit: '', mcmodels: ''
+  },
+  intro: "Welcome to GooseART — a creative portfolio showcasing Paige's artwork, graphic design, illustrations, pixel art, and more.",
+  portfolio: {
+    'graphic-design': {
+      title: 'Graphic Design',
+      kicker: '01 / DESIGN',
+      description: 'Logos, branding, advertisements, merchandise, posters, social media design and more.',
+      color: 'teal',
+      categories: [
+        ['logos','Logos','Identity systems, marks and illustrated logo work.'],
+        ['business-cards','Business Cards','Professional cards designed to match a brand.'],
+        ['merchandise','Merchandise','Graphics made for apparel, products and merch.'],
+        ['social-media','Social Media Posts / Reels','Social graphics, promotional posts and reel assets.'],
+        ['advertisements','Advertisements','Promotional graphics built to get attention.'],
+        ['posters','Poster Design','Posters, event graphics and visual announcements.'],
+        ['headers-banners','Branded Headers / Banners','Headers, banners and online brand graphics.']
+      ]
+    },
+    'illustration': {
+      title: 'Illustration', kicker: '02 / ILLUSTRATION',
+      description: 'Expressive illustrated work, from stickers to Twitch reactions and emojis.', color: 'gold',
+      categories: [['stickers','Stickers','Custom sticker illustrations and expressive graphics.'],['twitch-reactions','Twitch Reactions / Emojis','Reaction sets, emotes and stream-ready artwork.']]
+    },
+    'pixel-art': {
+      title: 'Pixel Art', kicker: '03 / PIXEL ART',
+      description: 'Pixel-based artwork with a focus on Minecraft item textures.', color: 'ink',
+      categories: [['minecraft-textures','Minecraft Item Textures','Custom item textures and pixel-art assets for Minecraft.']]
+    },
+    'learning': {
+      title: 'Little Experience / Willing to Learn', kicker: '04 / EXPERIMENTAL',
+      description: 'Projects Paige has some experience with, is developing, or is excited to learn.', color: 'olive',
+      categories: [['youtube-thumbnails','YouTube Thumbnails','Minecraft-focused thumbnail concepts and designs.'],['minecraft-gui','Minecraft Custom GUI','Custom interfaces and Minecraft GUI concepts.'],['3d-rendering','3D Item Rendering','Rendered item visuals and experimental 3D work.'],['anything-else','Anything Else!','Miscellaneous projects that do not fit another category.']]
+    }
+  },
+  projects: {
+    /* Add project objects here. Example:
+    'logos': [{title:'Project Name', description:'...', image:'assets/work/my-image.jpg', client:'Client', date:'2026', tools:'Photoshop'}]
+    */
+  },
+  pricing: [
+    {name:'Social Media Revamp', details:'Profile avatar + header/banner', price:'$135', group:'Graphic Design'},
+    {name:'Social Media Branding', details:'Logo design + header design', price:'$135', group:'Graphic Design'},
+    {name:'Business Logo Package', details:'Logo design + business card design', price:'$140', group:'Graphic Design'},
+    {name:'Illustrated Logo Package', details:'Illustrated logo + mini icon', price:'$155', group:'Illustration'},
+    {name:'Discord Server Revamp', details:'Illustrated logo + mini icon + banner design (1080p)', price:'$190', group:'Graphic Design'},
+    {name:'1080p Illustration Package', details:'Illustrated logo + mini icon + 1080p illustration', price:'$275', group:'Illustration'},
+    {name:'1440p Illustration Package', details:'Illustrated logo + mini icon + 1440p illustration', price:'$335', group:'Illustration'},
+    {name:'Store Icons Package', details:'4x icon above gets $5 discount · 8x icon above gets $15 discount', price:'Custom', group:'Graphic Design'},
+    {name:'Weekly Thumbnail Packages (x3)', details:'x3 thumbnails', price:'$80', group:'Little Experience / Willing to Learn'}
+  ]
+};
