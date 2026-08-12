@@ -1,36 +1,18 @@
 # GooseART Website
 
-Static, responsive artist portfolio website for Paige / GooseART.
+## Run with npm
 
-## Files
-- `index.html` — site shell and navigation
-- `styles.css` — visual design
-- `app.js` — routing and page rendering
-- `data.js` — editable portfolio, pricing, and social configuration
-- `assets/` — supplied GooseART branding/reference images
-
-## Editing content
-Open `data.js` to:
-- Add portfolio projects under `GOOSEART.projects`.
-- Add image paths such as `assets/work/my-art.jpg`.
-- Add social URLs in `GOOSEART.socials`.
-- Change intro copy.
-- Adjust pricing entries if Paige changes packages.
-
-## Portfolio project example
-```js
-'logos': [
-  {
-    title: 'Example Logo',
-    description: 'Short project description.',
-    image: 'assets/work/example.jpg',
-    client: 'Client Name',
-    date: '2026',
-    tools: 'Photoshop / Illustrator'
-  }
-]
+```bash
+npm install
+npm start
 ```
 
-The site uses the supplied Paige wordmark and P mark without recreating them. Discord is connected to `https://discord.gg/FRrZpU6bXH` as requested.
+Then open the local URL Vite prints (normally http://localhost:5173).
 
-The contact form is intentionally front-end only until a real form/email backend is connected.
+## Other commands
+
+- `npm run dev` — development server
+- `npm run build` — production build
+- `npm run preview` — preview the production build
+
+The project uses Vite and is configured so `npm start` launches the site.
