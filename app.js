@@ -1,3 +1,5 @@
+import { GOOSEART } from './data.js';
+
 const app = document.getElementById('app');
 const loader = document.getElementById('loader');
 const menuToggle = document.getElementById('menuToggle');

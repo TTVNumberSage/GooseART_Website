@@ -3,7 +3,7 @@
   Edit this file to add/remove portfolio items, pricing, and social URLs.
   Social URLs intentionally start empty except for the Discord invite supplied by the client.
 */
-const GOOSEART = {
+export const GOOSEART = {
   contact: {
     email: 'perickson0222@gmail.com',
     discord: 'https://discord.gg/FRrZpU6bXH',

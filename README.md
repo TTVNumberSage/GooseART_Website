@@ -24,3 +24,16 @@ Formspree controls where submissions are delivered. The recipient email addresse
 - `npm run dev`
 - `npm run build`
 - `npm run preview`
+
+
+## Cloudflare Workers deployment
+
+This version is configured for Cloudflare Workers Static Assets.
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Output directory: `dist`
+- Root directory: `/` (repository root)
+- `wrangler.toml` defines the Worker and serves the Vite `dist` folder as static assets.
+- The site remains a client-side hash-routed Vite site, so the existing visual design and navigation are unchanged.
+- The contact form continues to submit directly to the configured Formspree endpoint from the browser.

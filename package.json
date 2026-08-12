@@ -7,9 +7,11 @@
     "dev": "vite",
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
-    "vite": "^7.1.0"
+    "vite": "^7.1.0",
+    "wrangler": "^4.122.0"
   }
 }
