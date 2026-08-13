@@ -58,7 +58,7 @@ export const GOOSEART = {
   },
   projects: {
     /* Add project objects here. Example:
-    'logos': [{title:'Project Name', description:'...', image:'assets/work/my-image.jpg', client:'Client', date:'2026', tools:'Photoshop'}]
+    'logos': [{title:'Project Name', description:'...', image:'/assets/work/my-image.jpg', client:'Client', date:'2026', tools:'Photoshop'}]
     */
   },
   pricing: [

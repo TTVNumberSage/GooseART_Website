@@ -41,3 +41,7 @@ This version is configured for Cloudflare Workers Static Assets.
 
 ### Cloudflare image fix
 The Paige hero wordmark is explicitly imported into the Vite bundle so it is hashed/copied into `dist/assets` during production builds. This avoids broken image paths caused by JavaScript string-based asset references.
+
+
+### Cloudflare asset handling
+All site-wide images used by HTML/JavaScript are copied into `public/assets` and referenced with root-relative `/assets/...` URLs. Vite copies these files unchanged into `dist/assets`, and Cloudflare Workers Static Assets serves them directly. Project images added later should be placed under `public/assets/work/` and referenced as `/assets/work/filename.ext` in `data.js`.

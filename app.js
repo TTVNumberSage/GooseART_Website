@@ -1,6 +1,4 @@
 import { GOOSEART } from './data.js';
-import paigeWordmark from './assets/paige-wordmark.png';
-
 const app = document.getElementById('app');
 const loader = document.getElementById('loader');
 const menuToggle = document.getElementById('menuToggle');
@@ -8,6 +6,12 @@ const mobileMenu = document.getElementById('mobileMenu');
 
 const esc = s => String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const link = (href,label,cls='btn') => `<a class="${cls}" href="${href}">${label}</a>`;
+const normalizeAssetPath = path => {
+  const value = String(path ?? '');
+  if (!value) return '';
+  if (/^(?:https?:|data:|blob:|\/)/i.test(value)) return value;
+  return '/' + value.replace(/^\.\//, '').replace(/^\//, '');
+};
 
 function shell(title, body){
   document.title = `${title} — GooseART`;
@@ -24,7 +28,7 @@ function home(){
     <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow">GOOSEART / PAIGE</p>
-        <img class="wordmark" src="${paigeWordmark}" alt="Paige">
+        <img class="wordmark" src="/assets/paige-wordmark.png" alt="Paige">
         <h1>Artist <em>&</em> Designer</h1>
         <p>${esc(GOOSEART.intro)}</p>
         <div class="actions">${link('#/portfolio','View Portfolio','btn dark')}${link('#/pricing','View Pricing','btn light')}${link('#/contact','Contact Paige','btn light')}</div>
@@ -46,7 +50,7 @@ function discipline(slug){
 function galleryPage(parent,catSlug){
   const c=GOOSEART.portfolio[parent]; const cat=c?.categories.find(x=>x[0]===catSlug); if(!cat) return notFound();
   const [slug,title,desc]=cat; const items=GOOSEART.projects[slug]||[];
-  const gallery=items.length?`<div class="gallery">${items.map((p,i)=>`<article class="project" data-project="${i}" data-slug="${esc(slug)}"><div class="project-art">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.title||title)}">`:''}</div><div class="project-info"><h3>${esc(p.title||'Untitled Project')}</h3><p>${esc(p.description||'Portfolio project')}</p></div></article>`).join('')}</div>`:`<div class="empty-state"><img src="assets/goose-p-mark.jpg" alt="GooseART logo"><h3>Portfolio Image Placeholder</h3><p>This gallery is ready for Paige's ${esc(title.toLowerCase())} work. Add project entries in <strong>data.js</strong> and they will appear here automatically.</p></div>`;
+  const gallery=items.length?`<div class="gallery">${items.map((p,i)=>`<article class="project" data-project="${i}" data-slug="${esc(slug)}"><div class="project-art">${p.image?`<img src="${esc(normalizeAssetPath(p.image))}" alt="${esc(p.title||title)}">`:''}</div><div class="project-info"><h3>${esc(p.title||'Untitled Project')}</h3><p>${esc(p.description||'Portfolio project')}</p></div></article>`).join('')}</div>`:`<div class="empty-state"><img src="/assets/goose-p-mark.jpg" alt="GooseART logo"><h3>Portfolio Image Placeholder</h3><p>This gallery is ready for Paige's ${esc(title.toLowerCase())} work. Add project entries in <strong>data.js</strong> and they will appear here automatically.</p></div>`;
   return shell(title,pageTitle(`${c.title} / ${catSlug}` ,title,desc)+`<section class="section"><div class="section-head"><div><p class="eyebrow">FEATURED WORK</p><h2>Gallery</h2></div><p>Each project can include an image, title, description, client, date, tools and external link.</p></div>${gallery}</section>`);
 }
 function pricing(){
