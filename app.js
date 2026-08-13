@@ -64,7 +64,7 @@ function socialCards(){
   const list=[['X','x','𝕏'],['Instagram','instagram','◎'],['BuiltByBit','builtbybit','B'],['MCModels','mcmodels','M']];
   return list.map(([name,key,icon])=>GOOSEART.socials[key]?`<a class="social-card" href="${esc(GOOSEART.socials[key])}" target="_blank" rel="noopener"><div><h3>${name}</h3><small>Visit GooseART on ${name}</small></div><span class="social-icon">${icon} ↗</span></a>`:`<div class="social-card disabled"><div><h3>${name}</h3><small>URL not connected yet</small></div><span class="social-icon">${icon}</span></div>`);
 }
-function socials(){return shell('Socials',pageTitle('GooseART / Socials','Find the artist.','Social profiles are intentionally left unlinked until the correct Paige/GooseART URLs are supplied.')+`<section class="section"><div class="social-grid">${socialCards().join('')}</div><div class="price-note" style="margin-top:40px"><strong>Discord is connected.</strong> Use the button to join the GooseART Discord: discord.gg/FRrZpU6bXH.</div></section>`)}
+function socials(){return shell('Socials',pageTitle('GooseART / Socials','Find the artist.','Social profiles are intentionally left unlinked until the correct Paige/GooseART URLs are supplied.')+`<section class="section"><div class="social-grid">${socialCards().join('')}</div></section>`)}
 function notFound(){return shell('Not Found',pageTitle('404','That page wandered off.','Try heading back to the portfolio and pick another creative corner.')+`<section class="section">${link('#/portfolio','Back to Portfolio','btn dark')}</section>`)}
 
 function render(){
