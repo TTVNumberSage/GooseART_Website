@@ -1,4 +1,5 @@
 import { GOOSEART } from './data.js';
+import paigeWordmark from './assets/paige-wordmark.png';
 
 const app = document.getElementById('app');
 const loader = document.getElementById('loader');
@@ -23,7 +24,7 @@ function home(){
     <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow">GOOSEART / PAIGE</p>
-        <img class="wordmark" src="assets/paige-wordmark.png" alt="Paige">
+        <img class="wordmark" src="${paigeWordmark}" alt="Paige">
         <h1>Artist <em>&</em> Designer</h1>
         <p>${esc(GOOSEART.intro)}</p>
         <div class="actions">${link('#/portfolio','View Portfolio','btn dark')}${link('#/pricing','View Pricing','btn light')}${link('#/contact','Contact Paige','btn light')}</div>

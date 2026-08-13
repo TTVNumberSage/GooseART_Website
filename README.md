@@ -37,3 +37,7 @@ This version is configured for Cloudflare Workers Static Assets.
 - `wrangler.toml` defines the Worker and serves the Vite `dist` folder as static assets.
 - The site remains a client-side hash-routed Vite site, so the existing visual design and navigation are unchanged.
 - The contact form continues to submit directly to the configured Formspree endpoint from the browser.
+
+
+### Cloudflare image fix
+The Paige hero wordmark is explicitly imported into the Vite bundle so it is hashed/copied into `dist/assets` during production builds. This avoids broken image paths caused by JavaScript string-based asset references.
